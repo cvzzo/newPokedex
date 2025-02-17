@@ -1,0 +1,16 @@
+
+<form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)" class="form">
+    <h1 class="title">Register</h1>
+    @if(message){
+        <p>{{message}}</p>
+    }
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput class="input" type="email" name="email" ngModel required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput class="input" type="password" name="password" ngModel required>
+    </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" class="submit" [disabled]="!homeform.valid">Invia</button>
+</form>

@@ -1,0 +1,23 @@
+.form{
+    background-color: rgb(255, 255, 255);
+    padding: 3%;
+    display:grid;
+    width: 30%;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 2%;
+    box-shadow: #21262d3a 0px 8px 8px;
+
+
+    .submit{
+        color: white !important;
+        box-shadow: #21262d3a 0px 8px 8px;
+        background-color: rgb(51, 131, 250) !important;
+    }
+
+    .submit:disabled{
+        border: 2px solid #686868;
+        color: #686868 !important;
+        background-color: rgba(214, 214, 214, 0) !important;
+    }
+}
