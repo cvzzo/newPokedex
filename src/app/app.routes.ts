@@ -12,5 +12,6 @@ export const routes: Routes = [
     { path: 'pokemon/:id', component: PokemonComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
-    { path: 'favourites', component: StarredComponent}
+    { path: 'favourites', component: StarredComponent},
+    { path: '**', redirectTo: '' }
 ];

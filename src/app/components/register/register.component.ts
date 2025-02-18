@@ -24,8 +24,9 @@ message ='';
   onSubmit(form: NgForm){
     const email = form.value.email
     const password = form.value.password
+    const username = form.value.username
     
-    this.authService.register(email, password).subscribe((e)=>{
+    this.authService.register(email, username, password).subscribe((e)=>{
       if (e.error){
         this.message = e.error.message
       }else{
