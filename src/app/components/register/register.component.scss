@@ -8,6 +8,13 @@
     margin-top: 2%;
     box-shadow: #21262d3a 0px 8px 8px;
 
+    .mat-mdc-form-field{
+        border: 2px solid #000;
+
+        .mdc-text-field--filled:not(.mdc-text-field--disabled){
+            background-color: rgb(0, 255, 55) !important;
+        }
+    }
 
     .submit{
         color: white !important;

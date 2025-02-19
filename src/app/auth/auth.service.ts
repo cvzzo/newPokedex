@@ -10,8 +10,14 @@ export class AuthService {
   
   supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   currentUser = signal<{ email:string, username: string } | null>(null)
+  isLogged = false
+  isAdmin = false
 
   constructor() { }
+
+  isAuthenticated(){
+    return this.isLogged
+  }
 
   register(email:string, username:string, password: string): Observable<AuthResponse>{
     const promise = this.supabase.auth.signUp({
@@ -19,10 +25,11 @@ export class AuthService {
       password,
       options:{
         data:{
-          username
+          username,
         }
       }
     });
+    this.isLogged = true
     return from(promise);
   }
 
@@ -32,6 +39,23 @@ export class AuthService {
       email,
       password
     })
+    this.isLogged = true
     return from(promise)
   }
+
+  logout(){
+    this.isLogged = false
+    this.supabase.auth.signOut()
+  }
+
+  getID(){
+    this.supabase.auth.getUser('id')
+  }
+
+
+  async isRoleAdmin(){
+    return this.isAdmin
+  }
+
+  
 }

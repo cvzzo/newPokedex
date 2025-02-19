@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,7 +7,7 @@ import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
-
+import { SupabaseService } from '../../auth/supabase.service';
 
 @Component({
   selector: 'app-register',
@@ -18,23 +18,39 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   authService = inject(AuthService);
   router = inject(Router);
+  supabaseService = inject(SupabaseService);
 
-message ='';
+  message = '';
 
-  onSubmit(form: NgForm){
-    const email = form.value.email
-    const password = form.value.password
-    const username = form.value.username
-    
-    this.authService.register(email, username, password).subscribe((e)=>{
-      if (e.error){
-        this.message = e.error.message
-      }else{
-        this.router.navigateByUrl('/')
+  async onSubmit(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    const username = form.value.username;
+  
+    this.authService.register(email, username, password).subscribe(async (response) => {
+      if (response.error) {
+        this.message = response.error.message;
+      } else {
+        // 🔹 Dopo la registrazione, ottieni i dettagli dell'utente autenticato
+        const user = await this.supabaseService.getCurrentUser();
+        
+        if (user) {
+          const userid = user.id; 
+  
+          const userData = {
+            userid,
+            email,
+            username,
+          };
+  
+          await this.supabaseService.insertUser(userData);
+        }
+  
+        this.router.navigateByUrl('/');
       }
-    })
-
-    form.reset()
+    });
+  
+    form.reset();
   }
-
+  
 }
