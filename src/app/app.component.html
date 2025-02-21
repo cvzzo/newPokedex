@@ -13,7 +13,7 @@
         <a routerLink="favourites" class="star"><h3>Favourites</h3></a>
 
         <div>
-            @if(authService?.isRoleAdmin()){
+            @if(userService?.getAdmin()){
                 <a routerLink="accountList"><h3>Admin</h3></a>
             }
             <a routerLink="profile"><h3>Profile</h3></a>

@@ -31,7 +31,7 @@ export class RegisterComponent {
       if (response.error) {
         this.message = response.error.message;
       } else {
-        // 🔹 Dopo la registrazione, ottieni i dettagli dell'utente autenticato
+
         const user = await this.supabaseService.getCurrentUser();
         
         if (user) {

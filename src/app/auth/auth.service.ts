@@ -1,7 +1,8 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { AuthResponse, createClient } from '@supabase/supabase-js';
 import { Observable, from } from 'rxjs';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,6 @@ export class AuthService {
   supabase = createClient(environment.supabaseUrl, environment.supabaseKey);
   currentUser = signal<{ email:string, username: string } | null>(null)
   isLogged = false
-  isAdmin = false
 
   constructor() { }
 
@@ -50,11 +50,6 @@ export class AuthService {
 
   getID(){
     this.supabase.auth.getUser('id')
-  }
-
-
-  async isRoleAdmin(){
-    return this.isAdmin
   }
 
   

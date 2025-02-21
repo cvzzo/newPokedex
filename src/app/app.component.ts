@@ -5,6 +5,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { AuthService } from './auth/auth.service';
 import { SupabaseService } from './auth/supabase.service';
 import { Router } from '@angular/router';
+import { UserService } from './auth/user.service';
 
 @Component({
   selector: 'app-root',
@@ -18,12 +19,14 @@ export class AppComponent implements OnInit {
   authService: AuthService | null = null;
   supabaseService: SupabaseService | null = null
   router: Router | null = null
+  userService: UserService | null = null
 
   constructor() {
     if (isPlatformBrowser(this.platform)) {
       this.authService = inject(AuthService);
       this.supabaseService = inject(SupabaseService)
       this.router = inject(Router)
+      this.userService = inject(UserService)
     }
   }
   
@@ -38,16 +41,22 @@ export class AppComponent implements OnInit {
             })
             this.userID = s?.user.id;
             this.authService!.isLogged = true
+            this.getData()
         } else if (e === 'SIGNED_OUT') {
           this.authService!.isLogged = false
             this.authService?.currentUser.set(null);
+            this.getData()
         }
     })
 }
 
-  
+  async getData(){
+    await this.userService?.getUserID(); 
+    await this.userService?.getUserInfo();
+  }
 
   logout(){
+    this.getData()
     this.authService?.logout()
     this.authService!.isLogged = false
     this.router?.navigateByUrl('/');

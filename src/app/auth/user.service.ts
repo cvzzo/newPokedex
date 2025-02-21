@@ -20,6 +20,12 @@ export class UserService {
 
   uID=''
 
+  id = 0
+  name=''
+  email=''
+  admin=false
+  
+
 
   
   getUserID(): Promise<string> {
@@ -42,7 +48,6 @@ export class UserService {
 
   async getUserInfo() {
 
-  
     if (!this.uID || !this.uID.match(/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/)) {
       console.error('uID non valido:', this.uID)
       return null
@@ -50,7 +55,7 @@ export class UserService {
 
     const { data, error } = await this.supabase
       .from('users')  
-      .select('role, name, email')
+      .select('role, name, email, id')
       .eq('userid', this.uID)
       .single() 
 
@@ -58,7 +63,16 @@ export class UserService {
       console.error('Errore nel recupero delle informazioni utente:', error)
       return null
     }
-  
+
+    this.name = data.name;
+    this.email = data.email;
+    this.admin = Boolean(data.role);
+    this.id = data.id;
     return data
+  }
+  
+
+  getAdmin(){
+    return this.admin
   }
 }
