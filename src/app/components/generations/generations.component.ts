@@ -37,12 +37,8 @@ export class GenerationsComponent implements OnInit {
     this.pokemonService?.getGenerations().subscribe(resp=>{
       const data = resp.results
       this.generations = data
-      console.log(this.generations)
     })
   }
 
-  submit(coso: any){
-    console.log(coso)
-  }
   
 }

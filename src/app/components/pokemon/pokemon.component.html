@@ -1,5 +1,24 @@
 <div>
     <h2>Pokemon's Info</h2>
     <hr>
-    <h1>Name: {{pokemon.name}}</h1>
+    <h2><span>Name: </span>{{pokemon.name}}</h2>
+    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="">
+    <h2><span>Games:</span></h2>
+    <div *ngFor="let game of pokemon.game_indices">
+        <h2>{{game.version.name}}</h2>
+    </div>
+
+    <h2><span>Height: </span>{{pokemon.height*10}} cm</h2>
+
+    <h2><span>ID: </span>{{pokemon.id}}</h2>
+    <h2><span>Moves: </span></h2>
+    <div *ngFor="let move of pokemon.moves">
+        <h2><span>Name: </span>{{move.move.name}}</h2>
+        <!-- aggiungere info della mossa -->
+    </div>
+    <h2><span>Stats: </span></h2>
+    <div *ngFor="let stat of pokemon.stats">
+        <h2>{{stat.stat.name}}</h2>
+        <h2>{{stat.base_stat}}</h2>
+    </div>
 </div>

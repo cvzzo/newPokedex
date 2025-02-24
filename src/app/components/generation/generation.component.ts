@@ -16,19 +16,27 @@ export class GenerationComponent implements OnInit {
   route = inject(ActivatedRoute);
   pokemonService = inject(PokemonService);
   parametro: any;
+  genInfo: any;
   pokemonList: any = [];
   pokemonInfo: any = [];
+  pokemonInfoSorted: any = [];
 
   ngOnInit() {
     this.parametro = this.route.snapshot.paramMap.get('id');
     
     this.pokemonService.getGeneration(this.parametro).subscribe(resp => {
+      this.genInfo = resp;
       this.pokemonList = resp.pokemon_species;
 
-      const requests = this.pokemonList.map((e: any) => this.pokemonService.getPokemon(e.name));
+      const pokemonRequests = this.pokemonList.map((e: any) => this.pokemonService.getPokemon(e.url));
 
-      forkJoin(requests).subscribe((responses:any) => {
-        this.pokemonInfo = responses.sort((a: any, b: any) => a.order - b.order);
+      forkJoin(pokemonRequests).subscribe((pokemonData:any) => {
+        const pokemonInfoRequests = pokemonData.map((pokemon:any) => this.pokemonService.getPokemonInfo(pokemon.id));
+
+        forkJoin(pokemonInfoRequests).subscribe(infoData => {
+          this.pokemonInfo = infoData;
+          this.pokemonInfoSorted = [...this.pokemonInfo].sort((a, b) => a.id - b.id);
+        });
       });
     });
   }

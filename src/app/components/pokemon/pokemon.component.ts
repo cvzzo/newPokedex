@@ -18,8 +18,7 @@ export class PokemonComponent implements OnInit {
 
   ngOnInit() {
     this.parametro = this.route.snapshot.paramMap.get('id');
-    
-    this.pokemonService.getPokemon(this.parametro).subscribe((resp)=>{
+    this.pokemonService.getPokemonInfo(this.parametro).subscribe(resp =>{
       this.pokemon = resp
     })
   }
