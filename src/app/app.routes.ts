@@ -12,7 +12,7 @@ import { AdminGuard } from './auth/admin.guard';
 
 export const routes: Routes = [
     { path: '', component: GenerationsComponent},
-    { path: 'generation', component: GenerationComponent},
+    { path: 'generation/:id', component: GenerationComponent},
     { path: 'pokemon/:id', component: PokemonComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},

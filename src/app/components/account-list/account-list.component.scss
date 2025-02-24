@@ -1,0 +1,21 @@
+div{
+    div{
+        display: flex;
+        margin: 20px;
+        align-items: center;
+        a{
+            margin-right: 20px;
+            h3{
+                text-decoration: underline;
+                background-color: white;
+                padding: 15px;
+                border-radius: 8px;
+                border: 1px solid rgb(199, 199, 199);
+                margin: 0 !important;
+            }
+        }
+        h3{
+            margin-right: 20px;
+        }
+    }
+}

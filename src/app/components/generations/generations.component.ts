@@ -1,11 +1,22 @@
 import { Component, inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
+interface Starter {
+  name: string;
+  image: string;
+}
+
+interface GenerationData {
+  region: string;
+  starters: Starter[];
+}
 
 @Component({
   selector: 'app-generations',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, RouterLink],
   templateUrl: './generations.component.html',
   styleUrl: './generations.component.scss'
 })
@@ -14,23 +25,24 @@ export class GenerationsComponent implements OnInit {
   private readonly platform = inject(PLATFORM_ID);
   pokemonService: PokemonService | null = null;
 
-constructor() {
+  constructor() {
     if (isPlatformBrowser(this.platform)) {
-      this.pokemonService = inject(PokemonService)
+      this.pokemonService = inject(PokemonService);
     }
   }
 
   generations:any
 
-  ngOnInit(){
-    this.pokemonService?.getGeneration().subscribe({
-      next:(resp) => {
-        this.generations = resp.results
-      },
-      error: (error) => {
-        console.log('Errore nella richiesta ' , error)
-      }
+  ngOnInit(): void {
+    this.pokemonService?.getGenerations().subscribe(resp=>{
+      const data = resp.results
+      this.generations = data
+      console.log(this.generations)
     })
   }
 
+  submit(coso: any){
+    console.log(coso)
+  }
+  
 }

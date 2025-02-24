@@ -19,7 +19,19 @@ export class AdminService {
   
   async getUsers() {
 
-    
+    const { data, error } = await this.supabase
+      .from('users')  
+      .select('role, name, email, id')
+      .eq('role', false)
+
+    if (error) {
+      console.error('Errore nel recupero delle informazioni utente:', error)
+      return null
+    }
+
+    this.persone = data;
+    console.log(data)
+    return data
   }
   
 }

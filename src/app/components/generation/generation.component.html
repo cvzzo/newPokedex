@@ -1,1 +1,13 @@
-<p>generation works!</p>
+<div>
+    <h2>Choose a Pokémon</h2>
+    <hr>
+
+    <div class="grid-container">
+        <div class="grid-item" *ngFor="let pokemon of pokemonInfo">
+            <a [routerLink]="['/pokemon', pokemon.name]">
+            <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}">
+            <h1>{{pokemon.name}}</h1>
+        </a>
+        </div>
+    </div>
+</div>

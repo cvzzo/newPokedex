@@ -3,10 +3,10 @@
     <hr>
 
     <div *ngFor="let gen of generations" >
-        <a href="">
-            <div class="container">
-                <p>{{gen.name}}</p>
-            </div>
-        </a>
+        <div class="gen-container">
+            <a [routerLink]="['/generation', gen.url]">
+                <h1>{{gen.name}}</h1>
+            </a>
+        </div>
     </div>
 </div>

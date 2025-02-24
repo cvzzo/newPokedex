@@ -12,7 +12,15 @@ export class PokemonService {
 
   generations = 'https://pokeapi.co/api/v2/generation'
 
-  getGeneration(): Observable<any>{
+  getGeneration(url: any): Observable<any>{
+    return this.http.get<any>(url)
+  }
+
+  getGenerations():Observable<any>{
     return this.http.get<any>(this.generations)
+  }
+
+  getPokemon(url: string): Observable<any>{
+    return this.http.get<any>(`https://pokeapi.co/api/v2/pokemon/${url}`)
   }
 }
