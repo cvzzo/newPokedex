@@ -1,24 +1,60 @@
 <div>
-    <h2>Pokemon's Info</h2>
+    <h2 class="title">Pokemon's Info</h2>
     <hr>
-    <h2><span>Name: </span>{{pokemon.name}}</h2>
-    <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="">
-    <h2><span>Games:</span></h2>
-    <div *ngFor="let game of pokemon.game_indices">
-        <h2>{{game.version.name}}</h2>
+    <div class="mainInfo" *ngIf="pokemon">
+        <img [src]="pokemon?.sprites?.other?.['official-artwork']?.front_default" alt="">
+        <hr>
+        <div class="second">
+            <h2><span>Name: </span>{{pokemon?.name}}</h2>
+            <h2><span>ID: </span>{{pokemon?.id}}</h2>
+            <h2><span>Types: </span></h2>
+            <div *ngFor="let type of pokemon?.types">
+                <h2 [ngClass]="'type-' + type?.type?.name">{{type?.type?.name}}</h2>
+            </div>
+            <h2><span>Height: </span>{{pokemon?.height * 10}} cm</h2>
+            <h2><span>Weight: </span>{{pokemon?.weight / 10}} Kg</h2>
+
+            <div *ngIf="isFavorite">
+            <button mat-flat-button (click)="removeFavorite()">
+                    <mat-icon>favorite</mat-icon>
+                    Remove favorite
+                </button>
+            </div>
+            <div *ngIf="!isFavorite">
+                <button mat-stroked-button (click)="setFavorite()">
+                    <mat-icon>favorite</mat-icon>
+                    Set favorite
+                </button>
+                </div>
+            </div>
+        <hr>
+        <div class="third">
+            <h2><span>Stats: </span></h2>
+            <div *ngFor="let stat of pokemon?.stats">
+                <h2>{{stat?.stat?.name}}</h2>
+                <div class="stat-bar">
+                    <div class="stat-progress" [style.width.%]="(stat?.base_stat / 255) * 100"></div>
+                </div>
+                <h2 class="percent">{{stat?.base_stat}}/255</h2>
+            </div>
+        </div>
     </div>
 
-    <h2><span>Height: </span>{{pokemon.height*10}} cm</h2>
-
-    <h2><span>ID: </span>{{pokemon.id}}</h2>
-    <h2><span>Moves: </span></h2>
-    <div *ngFor="let move of pokemon.moves">
-        <h2><span>Name: </span>{{move.move.name}}</h2>
-        <!-- aggiungere info della mossa -->
+    <div class="name" *ngIf="pokemon?.moves?.length">
+        <h2><span>Moves: </span></h2>
+        <div class="grid-container">
+            <div *ngFor="let move of pokemon?.moves" class="grid-item">
+                <h2 class="move">{{move?.move?.name}}</h2>
+            </div>
+        </div>
     </div>
-    <h2><span>Stats: </span></h2>
-    <div *ngFor="let stat of pokemon.stats">
-        <h2>{{stat.stat.name}}</h2>
-        <h2>{{stat.base_stat}}</h2>
+
+    <div class="name" *ngIf="pokemon?.game_indices?.length">
+        <h2><span>Games:</span></h2>
+        <div class="grid-container">
+            <div *ngFor="let game of pokemon?.game_indices" class="grid-item">
+                <h2>{{game?.version?.name}}</h2>
+            </div>
+        </div>
     </div>
 </div>

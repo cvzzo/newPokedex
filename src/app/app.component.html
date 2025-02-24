@@ -1,7 +1,8 @@
 
-<div>
+<div class="container">
     <a routerLink="" class="logo"><h1>PokedeX</h1></a>
-    
+    <a routerLink="moves" class="moves"><h3>Moves</h3></a>
+
     @if(authService?.currentUser() === null){
         <div>
             <a routerLink="login"><h3>Login</h3></a>
