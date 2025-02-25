@@ -24,7 +24,7 @@ export class UserService {
   name=''
   email=''
   admin=false
-  
+  favorite: string[] = []
 
 
   
@@ -55,7 +55,7 @@ export class UserService {
 
     const { data, error } = await this.supabase
       .from('users')  
-      .select('role, name, email, id')
+      .select('role, name, email, id, favorite')
       .eq('userid', this.uID)
       .single() 
 
@@ -68,6 +68,7 @@ export class UserService {
     this.email = data.email;
     this.admin = Boolean(data.role);
     this.id = data.id;
+    this.favorite = data.favorite;
     return data
   }
   
@@ -75,4 +76,52 @@ export class UserService {
   getAdmin(){
     return this.admin
   }
+
+
+  addFavorite(id: any){
+    this.favorite.push(id)
+    this.updateFavorite()
+  }
+
+  async updateFavorite() {
+    try {
+      const { data, error } = await this.supabase
+        .from('users')
+        .update({ favorite: this.favorite })
+        .eq('userid', this.uID)
+        .select(); // Seleziona i dati aggiornati
+  
+      if (error) {
+        throw new Error(error.message); // Gestisce l'errore se c'è
+      }
+  
+      console.log('Favorite updated:', data); // Dovresti vedere i dati aggiornati
+    } catch (error) {
+      console.error('Error updating favorite:', error);
+    }
+  }
+  
+  
+  
+
+  removeFavorite(id: string) {
+    console.log('ID to remove:', id);
+    console.log('Current favorites:', this.favorite);
+    
+    // Rimuovi l'ID
+    const updatedFavorites = this.favorite.filter(e => String(e) !== id);
+  
+    // Verifica la rimozione
+    console.log('Updated favorites:', updatedFavorites);
+  
+    if (updatedFavorites.length === this.favorite.length) {
+      console.error('ID not found or not removed');
+    }
+  
+    this.favorite = updatedFavorites; // Assicurati che l'array venga aggiornato
+  
+    this.updateFavorite();
+  }
+  
+  
 }

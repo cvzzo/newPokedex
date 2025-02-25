@@ -2,8 +2,8 @@
     <h2 class="title">Pokemon's Info</h2>
     <hr>
     <div class="mainInfo" *ngIf="pokemon">
+        
         <img [src]="pokemon?.sprites?.other?.['official-artwork']?.front_default" alt="">
-        <hr>
         <div class="second">
             <h2><span>Name: </span>{{pokemon?.name}}</h2>
             <h2><span>ID: </span>{{pokemon?.id}}</h2>
@@ -27,14 +27,11 @@
                 </button>
                 </div>
             </div>
-        <hr>
         <div class="third">
             <h2><span>Stats: </span></h2>
             <div *ngFor="let stat of pokemon?.stats">
                 <h2>{{stat?.stat?.name}}</h2>
-                <div class="stat-bar">
-                    <div class="stat-progress" [style.width.%]="(stat?.base_stat / 255) * 100"></div>
-                </div>
+                <mat-progress-bar mode="determinate" [value]="(stat?.base_stat / 255) * 100"></mat-progress-bar>
                 <h2 class="percent">{{stat?.base_stat}}/255</h2>
             </div>
         </div>

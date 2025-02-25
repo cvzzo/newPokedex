@@ -1,13 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { PokemonCardComponent } from '../pokemon-card/pokemon-card.component';
 
 @Component({
   selector: 'app-generation',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, PokemonCardComponent],
   templateUrl: './generation.component.html',
   styleUrl: './generation.component.scss'
 })

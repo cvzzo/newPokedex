@@ -1,14 +1,11 @@
 <div>
     <h2>Choose a Pokémon</h2>
     <hr>
-    
-
+  
     <div class="grid-container">
-        <div class="grid-item" *ngFor="let pokemon of pokemonInfoSorted">
-            <a [routerLink]="['/pokemon', pokemon.id]">
-            <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}">
-            <h1>{{pokemon.name}}</h1>
-        </a>
-        </div>
+      <div class="grid-item" *ngFor="let pokemon of pokemonInfoSorted">
+        <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+      </div>
     </div>
-</div>
+  </div>
+  

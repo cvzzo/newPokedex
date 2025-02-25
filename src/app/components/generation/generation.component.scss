@@ -15,34 +15,9 @@ div {
         gap: 20px;
         justify-content: center;
 
-        .grid-item {
-            text-align: center;
-            padding: 10px;
-            border-radius: 10px;
-            transition: transform 0.2s;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            background-color: rgba(255, 255, 255, 0.251);
-
-            &:hover {
-                transform: scale(1.05);
-            }
-
-            img {
-                max-width: 100px;
-                height: auto;
-            }
-
-            h1 {
-                margin-top: 5px;
-                font-size: 20px;
-            }
-        }
+        
     }
 }
 
 
 
-a{
-    text-decoration: none;
-    color: black;
-}

@@ -4,14 +4,13 @@ html {
   
     &::before {
       content: "";
-      position: fixed;
+      position:fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
       background-image: url("../public/pokeball.jpg");
       background-size:contain;
-      background-position: center;
       opacity: 0.06; 
       z-index: -1; 
     }

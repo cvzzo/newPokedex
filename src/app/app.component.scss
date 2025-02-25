@@ -27,14 +27,13 @@ div{
         a{
             text-decoration: none;
             color: white;
+            cursor: pointer;
             h3{
                 font-weight: 400;
                 padding: 10px;
                 border-radius: 5px;
             }
-            h3:hover{
-                text-decoration: underline;
-            }
+
         }
 
     }
@@ -51,4 +50,9 @@ footer{
 .container{
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 
+}
+
+a:hover, h3:hover{
+    text-decoration: underline;
+    
 }

@@ -1,2 +1,9 @@
-<p>starred works!</p>
-<p>{{userService.uID}}</p>
+<div>
+    <h2>Your Favorites Pokémon</h2>
+    <hr>
+    <div class="grid-container">
+        <div *ngFor="let pokemon of favoritePokemon">
+            <app-pokemon-card [pokemon]="pokemon"></app-pokemon-card>
+        </div>
+    </div>
+</div>
