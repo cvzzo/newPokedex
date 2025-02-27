@@ -1,7 +1,6 @@
-<div>
-    <a [routerLink]="['/pokemon', pokemon.id]">
-      <img [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}">
-      <h1>{{pokemon.name}}</h1>
-    </a>
-  </div>
-  
+<div [ngClass]="getTypeClass()" >
+  <a [routerLink]="['/pokemon', pokemon.id]">
+    <img [src]="pokemon?.sprites?.other?.['official-artwork'].front_default" alt="{{pokemon.name}}">
+    <h1>{{pokemon.name.replace('-', ' ') | titlecase}}</h1>
+  </a>
+</div>

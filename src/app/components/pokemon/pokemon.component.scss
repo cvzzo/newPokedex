@@ -6,13 +6,17 @@
     overflow: hidden;
 }
 
-.title{
+.title {
     text-align: center;
 }
 
-hr{
+hr {
     margin-top: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    height: 1px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.486) !important;
+    border-radius: 10px;
 }
 
 .stat-progress {
@@ -24,6 +28,7 @@ hr{
 img {
     max-width: 500px;
     height: fit-content;
+    padding: 10px;
 }
 
 .mainInfo {
@@ -35,7 +40,8 @@ img {
     padding: 10px;
     border-radius: 10px;
     justify-content: center;
-    hr{
+
+    hr {
         margin: 0px !important;
     }
 }
@@ -79,52 +85,121 @@ h2+h2 .stat-progress {
 }
 
 
-    .name {
+.name {
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.656);
+    border-radius: 10px;
+    padding: 20px;
+
+    span {
+        font-size: 30px;
+
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 20px;
         text-align: center;
-        margin-bottom: 20px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        background-color: rgba(255, 255, 255, 0.656);
-        border-radius: 10px;
-        padding: 20px;
 
-        span {
-            font-size: 30px;
-
-        }
-
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 20px;
+        .grid-item {
             text-align: center;
-            .grid-item {
-                text-align: center;
-                padding: 10px;
-                border-radius: 10px;
-                transition: transform 0.2s;
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-                background-color: rgba(255, 255, 255, 0.656);
-                h2{
-                    font-size: 1rem;
+            padding: 10px;
+            border-radius: 10px;
+            transition: transform 0.2s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.656);
 
-                }
-                &:hover {
-                    transform: scale(1.05);
-                }
+            h2 {
+                font-size: 1rem;
+
+            }
+
+            &:hover {
+                transform: scale(1.05);
             }
         }
     }
+}
 
 
-    .percent{
-        font-size: 13px !important;
+.percent {
+    font-size: 13px !important;
+}
+
+
+
+span {
+    color: #0065ca;
+}
+
+button {
+    width: 190px !important;
+    margin-top: 20px;
+}
+
+
+.evolution {
+    margin-bottom: 2rem;
+    gap: 8rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.656);
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.evo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.evolution-item {
+    width: 170px;
+}
+
+
+.varieties {
+    margin-bottom: 2rem;
+    gap: 8rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.656);
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 50px;
+
+    .varieties-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+
+        .varieties-item {
+            width: 170px;
+        }
     }
+}
 
 
 
-    span{
-        color:#0065ca;
-    }
+
+
+
+
+
+
+
+
 
 
 
@@ -288,9 +363,4 @@ h2+h2 .stat-progress {
     border-radius: 5px;
     color: white;
     font-weight: 500;
-}
-
-button{
-    width: 190px !important;
-    margin-top: 20px;
 }

@@ -4,7 +4,6 @@ div {
     border-radius: 10px;
     transition: transform 0.2s;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255, 255, 255, 0.251);
 
     &:hover {
         transform: scale(1.05);
@@ -18,10 +17,149 @@ div {
     h1 {
         margin-top: 5px;
         font-size: 20px;
+        font-weight: 400 !important;
     }
 }
 
-a{
+a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
+
+
+.type-normal {
+    background-color: #a8a878bb;
+}
+
+.type-fighting {
+    background-color: #c03028bb;
+}
+
+.type-flying {
+    background-color: #a890f0bb;
+}
+
+.type-poison {
+    background-color: #a040a0bb;
+}
+
+.type-ground {
+    background-color: #e0c068bb;
+}
+
+.type-rock {
+    background-color: #b8a038bb;
+}
+
+.type-bug {
+    background-color: #a8b820bb;
+}
+
+.type-ghost {
+    background-color: #705898bb;
+}
+
+.type-steel {
+    background-color: #b8b8d0bb;
+}
+
+.type-fire {
+    background-color: #f08030bb;
+}
+
+.type-water {
+    background-color: #6493ebbb;
+}
+
+.type-grass {
+    background-color: #78c850bb;
+}
+
+.type-electric {
+    background-color: #f8d030bb;
+}
+
+.type-psychic {
+    background-color: #f85888bb;
+}
+
+.type-ice {
+    background-color: #98d8d8bb;
+}
+
+.type-dragon {
+    background-color: #7038f8bb;
+}
+
+.type-dark {
+    background-color: #705848bb;
+}
+
+.type-fairy {
+    background-color: #f0b6e3bb;
+}
+
+.type-stellar {
+    background-color: #6b5b95bb;
+}
+
+.type-unknown {
+    background-color: #8b8b8bbb;
+}
+
+:root {
+    --type-normal: #a8a878bb;
+    --type-fighting: #c03028bb;
+    --type-flying: #a890f0bb;
+    --type-poison: #a040a0bb;
+    --type-ground: #e0c068bb;
+    --type-rock: #b8a038bb;
+    --type-bug: #a8b820bb;
+    --type-ghost: #705898bb;
+    --type-steel: #b8b8d0bb;
+    --type-fire: #f08030bb;
+    --type-water: #6493ebbb;
+    --type-grass: #78c850bb;
+    --type-electric: #f8d030bb;
+    --type-psychic: #f85888bb;
+    --type-ice: #98d8d8bb;
+    --type-dragon: #7038f8bb;
+    --type-dark: #705848bb;
+    --type-fairy: #f0b6e3bb;
+    --type-stellar: #6b5b95bb;
+    --type-unknown: #8b8b8bbb;
+}
+
+
+$types: (
+    "normal": var(--type-normal),
+    "fighting": var(--type-fighting),
+    "flying": var(--type-flying),
+    "poison": var(--type-poison),
+    "ground": var(--type-ground),
+    "rock": var(--type-rock),
+    "bug": var(--type-bug),
+    "ghost": var(--type-ghost),
+    "steel": var(--type-steel),
+    "fire": var(--type-fire),
+    "water": var(--type-water),
+    "grass": var(--type-grass),
+    "electric": var(--type-electric),
+    "psychic": var(--type-psychic),
+    "ice": var(--type-ice),
+    "dragon": var(--type-dragon),
+    "dark": var(--type-dark),
+    "fairy": var(--type-fairy),
+    "stellar": var(--type-stellar),
+    "unknown": var(--type-unknown)
+);
+
+@each $type1, $color1 in $types {
+  @each $type2, $color2 in $types {
+    .dual-type-#{$type1}-#{$type2} {
+      background: linear-gradient(45deg, #{$color1} 50%, #{$color2} 50%) !important;
+    }
+  }
+}
+
+

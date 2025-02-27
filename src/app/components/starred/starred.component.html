@@ -1,5 +1,9 @@
 <div>
-    <h2>Your Favorites Pokémon</h2>
+    @if(favoritePokemon.length > 0){
+        <h2>Your Favorites Pokémon</h2>
+    }@else{
+        <h2>No Favorites Pokémon</h2>
+    }
     <hr>
     <div class="grid-container">
         <div *ngFor="let pokemon of favoritePokemon">

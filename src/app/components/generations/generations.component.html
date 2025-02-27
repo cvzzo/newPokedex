@@ -5,7 +5,7 @@
     <div *ngFor="let gen of generations" >
         <div class="gen-container">
             <a [routerLink]="['/generation', gen.url]">
-                <h1>{{gen.name}}</h1>
+                <h1>{{gen.name.replace('-', ' ') | uppercase}}</h1>
             </a>
         </div>
     </div>

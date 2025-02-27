@@ -9,7 +9,11 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     width: 70%;
     border-radius: 10px;
+    transition: transform 0.2s;
 
+    &:hover {
+        transform: scale(1.05);
+    }
 
     .pokemon-container {
         display: flex;
@@ -33,11 +37,14 @@
         }
     }
 
-    hr{
-        margin-top: 100px;
-        border-radius: 100px;
-        width: 80%;
-    }
+}
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.486) !important;
+    border-radius: 10px;
 }
 
 

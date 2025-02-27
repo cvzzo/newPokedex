@@ -1,8 +1,14 @@
-<div *ngFor="let persona of persone">
-    <div>
-    <a (click)="eliminaUtente(persona.id, persona.userid)"><h3>Delete</h3></a>
-    <h3>email: {{persona.email}}</h3>
-    <h3>name: {{persona.name}}</h3>
-</div>
-<hr>
+<div>
+    <h2 class="title">Delete an user</h2>
+    <hr>
+    <div *ngFor="let persona of persone" class="card">
+        <div>
+            <a (click)="eliminaUtente(persona.id, persona.userid)">
+                <h3>Delete</h3>
+            </a>
+            <h3>email: {{persona.email}}</h3>
+            <h3>name: {{persona.name}}</h3>
+        </div>
+        <hr>
+    </div>
 </div>

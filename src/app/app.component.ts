@@ -6,10 +6,11 @@ import { AuthService } from './auth/auth.service';
 import { SupabaseService } from './auth/supabase.service';
 import { Router } from '@angular/router';
 import { UserService } from './auth/user.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CommonModule],
+  imports: [RouterOutlet, RouterLink, CommonModule, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
