@@ -8,6 +8,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { UserService } from '../../auth/user.service';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { Router } from '@angular/router';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-generation',
@@ -17,12 +18,14 @@ import { Router } from '@angular/router';
 })
 export class PokemonComponent implements OnInit {
 
+  authService = inject(AuthService);
   router = inject(Router);
   route = inject(ActivatedRoute);
   pokemonService = inject(PokemonService);
   userService = inject(UserService);
   parametro: any;
   pokemon: any;
+  pokemonSpecies: any;
   isFavorite = false;
   favoritePokemon = [];
   isShiny = false;
@@ -74,6 +77,7 @@ export class PokemonComponent implements OnInit {
       });
       this.pokemonService.getPokemonInfo(this.parametro).subscribe(resp => {
         this.pokemonService.getByUrl(resp.species.url).subscribe(resp => {
+          this.pokemonSpecies = resp;
           resp.varieties.forEach((e: any) => {
             this.formUrl.push(e.pokemon.url)
           });

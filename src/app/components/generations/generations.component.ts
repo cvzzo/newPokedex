@@ -3,15 +3,6 @@ import { PokemonService } from '../../services/pokemon.service';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-interface Starter {
-  name: string;
-  image: string;
-}
-
-interface GenerationData {
-  region: string;
-  starters: Starter[];
-}
 
 @Component({
   selector: 'app-generations',
@@ -31,14 +22,17 @@ export class GenerationsComponent implements OnInit {
     }
   }
 
-  generations:any
+  generationsLink:any
+  generations:any[] = []
 
   ngOnInit(): void {
-    this.pokemonService?.getGenerations().subscribe(resp=>{
-      const data = resp.results
-      this.generations = data
-    })
+    this.pokemonService?.getGenerations().subscribe((resp:any)=>{
+      this.generationsLink = resp.results
+      this.generationsLink.forEach((element:any) => {
+        this.pokemonService?.getByUrl(element.url).subscribe((resp:any)=>{
+          this.generations.push(resp)
+        })
+      })
+  })
   }
-
-  
 }

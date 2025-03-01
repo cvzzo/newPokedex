@@ -29,18 +29,20 @@
                     Shiny sprite
                 </button>
             </div>
-            <div *ngIf="isFavorite">
-                <button mat-flat-button (click)="removeFavorite()">
-                    <mat-icon>favorite</mat-icon>
-                    Remove favorite
-                </button>
-            </div>
+            <div *ngIf="authService.isLogged">
+                <div *ngIf="isFavorite">
+                    <button mat-flat-button (click)="removeFavorite()">
+                        <mat-icon>favorite</mat-icon>
+                        Remove favorite
+                    </button>
+                </div>
             <div *ngIf="!isFavorite">
                 <button mat-stroked-button (click)="setFavorite()">
                     <mat-icon>favorite</mat-icon>
                     Set favorite
                 </button>
             </div>
+        </div>
         </div>
         <div class="third">
             <h2><span>Stats: </span></h2>
@@ -71,10 +73,6 @@
         </div>
         </div>
     </div>
-
-    
-
-
 
 
 

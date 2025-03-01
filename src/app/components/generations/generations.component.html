@@ -4,8 +4,9 @@
 
     <div *ngFor="let gen of generations" >
         <div class="gen-container">
-            <a [routerLink]="['/generation', gen.url]">
-                <h1>{{gen.name.replace('-', ' ') | uppercase}}</h1>
+            <a [routerLink]="['/generation', gen.id]">
+                <h1>{{gen.name.replace('-', ' ') | uppercase }}</h1>
+                <h3>{{gen.main_region.name | titlecase}}</h3>
             </a>
         </div>
     </div>
