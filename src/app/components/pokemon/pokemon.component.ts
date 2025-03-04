@@ -9,6 +9,7 @@ import { UserService } from '../../auth/user.service';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import pokemon from '../../types/pokemon'
 
 @Component({
   selector: 'app-generation',
@@ -24,7 +25,7 @@ export class PokemonComponent implements OnInit {
   pokemonService = inject(PokemonService);
   userService = inject(UserService);
   parametro: any;
-  pokemon: any;
+  pokemon: pokemon;
   pokemonSpecies: any;
   isFavorite = false;
   favoritePokemon = [];

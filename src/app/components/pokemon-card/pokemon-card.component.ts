@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import pokemon from '../../types/pokemon';
 
 @Component({
   selector: 'app-pokemon-card',

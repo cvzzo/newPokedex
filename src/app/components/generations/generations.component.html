@@ -2,12 +2,18 @@
     <h2>Choose a generation</h2>
     <hr>
 
-    <div *ngFor="let gen of generations" >
+    <div *ngFor="let gen of generations">
         <div class="gen-container">
             <a [routerLink]="['/generation', gen.id]">
-                <h1>{{gen.name.replace('-', ' ') | uppercase }}</h1>
-                <h3>{{gen.main_region.name | titlecase}}</h3>
+                <h1>{{ gen.name.replace('-', ' ') | uppercase }}</h1>
+                <h3>{{ gen.main_region.name | titlecase }}</h3>
+                
+                <div class="pokemon-container">
+                    <div *ngFor="let pokemon of starters[gen.name]" class="pokemon-card">
+                        <img [src]="pokemon.url" [alt]="pokemon.name">
+                    </div>
+                </div>
             </a>
-        </div>
+            </div>
     </div>
 </div>
