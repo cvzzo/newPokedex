@@ -2,12 +2,11 @@
     <h2 class="title">Delete an user</h2>
     <hr>
     <div *ngFor="let persona of persone" class="card">
-        <div>
-            <a (click)="eliminaUtente(persona.id, persona.userid)">
-                <h3>Delete</h3>
-            </a>
-            <h3>email: {{persona.email}}</h3>
-            <h3>name: {{persona.name}}</h3>
+        <div class="infoAccount">
+                <mat-icon (click)="openDialog(persona)" class="edit" fontIcon="edit" ></mat-icon>
+                <h3><span>Email: </span>{{persona.email}}</h3>
+                <h3><span>Name: </span>{{persona.name}}</h3>
+                <h3><span>Role: </span>@if(persona.role){Admin}@else{User}</h3>
         </div>
         <hr>
     </div>

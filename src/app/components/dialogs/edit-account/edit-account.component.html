@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Edit Account</h2>
+<mat-dialog-content>
+    <h3><span>Name: </span>{{data.name}}</h3>
+    <h3><span>Email: </span>{{data.email}}</h3>
+    <h3><span>Role: </span> @if(data.role){Admin}@else{User}</h3>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput class="input" type="text" formControlName="name" ngModel required>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput class="input" type="email" formControlName="email" ngModel required>
+        </mat-form-field>
+        <mat-radio-group formControlName="role">
+            <h3>Role: </h3>
+            <mat-radio-button value="admin">Admin</mat-radio-button>
+            <mat-radio-button value="user">User</mat-radio-button>
+        </mat-radio-group>
+        <button mat-button type="submit">Apply Changes</button>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

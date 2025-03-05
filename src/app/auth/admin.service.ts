@@ -25,7 +25,6 @@ export class AdminService {
     const { data, error } = await this.supabase
       .from('users')
       .select('role, name, email, id, userid')
-      .eq('role', false)
 
     if (error) {
       console.error('Errore nel recupero delle informazioni utente:', error)

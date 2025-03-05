@@ -21,8 +21,8 @@ export class GenerationComponent implements OnInit {
   pokemonService = inject(PokemonService);
   parametro: any;
   genInfo: any;
-  pokemonList: any = [];
-  pokemonInfo: any = [];
+  pokemonList: pokemon[] = [];
+  pokemonInfo: pokemonSpecies[] = [];
   pokemonInfoSorted: any = [];
 
   ngOnInit() {
@@ -37,7 +37,7 @@ export class GenerationComponent implements OnInit {
       forkJoin(pokemonRequests).subscribe((pokemonData:any) => {
         const pokemonInfoRequests = pokemonData.map((pokemon:any) => this.pokemonService.getPokemonInfo(pokemon.id));
 
-        forkJoin(pokemonInfoRequests).subscribe(infoData => {
+        forkJoin(pokemonInfoRequests).subscribe((infoData:any) => {
           this.pokemonInfo = infoData;
           this.pokemonInfoSorted = [...this.pokemonInfo].sort((a, b) => a.id - b.id);
         });
