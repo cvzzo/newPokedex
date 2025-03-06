@@ -18,6 +18,8 @@ export interface DialogData {
   name: string;
   email: string;
   role: boolean
+  id: string
+  userid: string
 }
 
 
@@ -34,11 +36,6 @@ export class AccountListComponent implements OnInit {
   adminService = inject(AdminService)
 
   persone: any
-
-  name: string
-  email: string
-  role: boolean
-
 
   async ngOnInit() {
     const data = await this.adminService.getUsers()
@@ -58,7 +55,7 @@ export class AccountListComponent implements OnInit {
 
   openDialog(persona:any): void {
     this.dialog.open(EditAccountComponent, {
-      data: {name: persona.name, email: persona.email, role: persona.role},
+      data: {name: persona.name, email: persona.email, role: persona.role, id: persona.id, userid: persona.userid},
     });
   }
 

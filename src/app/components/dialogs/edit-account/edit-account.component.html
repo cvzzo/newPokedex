@@ -14,11 +14,12 @@
         </mat-form-field>
         <mat-radio-group formControlName="role">
             <h3>Role: </h3>
-            <mat-radio-button value="admin">Admin</mat-radio-button>
-            <mat-radio-button value="user">User</mat-radio-button>
+            <mat-radio-button [value]="true">Admin</mat-radio-button>
+            <mat-radio-button [value]="false">User</mat-radio-button>
         </mat-radio-group>
-        <button mat-button type="submit">Apply Changes</button>
+        <button mat-button type="submit" [disabled]="myForm.invalid">Apply Changes</button>
     </form>
+    <button mat-button class="delete-button" (click)="eliminaUtente(data.id, data.userid)">Delete User</button>
 </mat-dialog-content>
 <mat-dialog-actions>
     <button mat-button mat-dialog-close>Close</button>

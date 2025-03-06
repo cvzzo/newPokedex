@@ -63,6 +63,34 @@ export class AdminService {
     } else {
       console.log('Utente eliminato con successo da auth.users');
     }
-  };
+  }
+
+  async updateUserList(name: string, email: string, role: boolean, id: string, userid: string) {
+    try {
+      const { error: authError } = await this.supabase.auth.admin.updateUserById(userid, { email });
+  
+      if (authError) {
+        throw new Error(`Errore aggiornamento email su Auth: ${authError.message}`);
+      }
+  
+      const { data, error } = await this.supabase
+        .from('users')
+        .update({ name: name, email: email, role: role })
+        .eq('userid', userid)
+        .select();
+  
+      if (error) {
+        throw new Error(`Errore aggiornamento dati utente: ${error.message}`);
+      }
+  
+      console.log('Dati aggiornati con successo:', data);
+      return { success: true, data };
+  
+    } catch (error) {
+      console.error('Errore nell\'aggiornamento dei dati:', error);
+      return { success: false, message: error };
+    }
+  }
+  
 }
 
