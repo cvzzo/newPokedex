@@ -74,6 +74,18 @@
         </div>
     </div>
 
+    <div class="evolution">
+        <h2>Moves</h2>
+        <hr>
+        <div class="evo-container">
+            <div *ngFor="let move of pokemon.moves" class="evolution-item">
+                    <mat-chip (click)="openMove(move.move.url)">
+                        <p class="chipName">{{move.move.name.replace('-', ' ') | titlecase}}</p>
+                    </mat-chip>
+            </div>
+        </div>
+    </div>
+
 
 
 </div>

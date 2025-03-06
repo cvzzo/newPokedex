@@ -9,11 +9,14 @@ import { UserService } from '../../auth/user.service';
 import { PokemonCardComponent } from "../pokemon-card/pokemon-card.component";
 import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
+import {MatChipsModule} from '@angular/material/chips';
 import pokemon from '../../types/pokemon'
+import { MatDialog } from '@angular/material/dialog';
+import { MovesComponent } from '../dialogs/moves/moves.component';
 
 @Component({
   selector: 'app-generation',
-  imports: [CommonModule, MatButtonModule, MatIconModule, MatProgressBarModule, PokemonCardComponent],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatProgressBarModule, PokemonCardComponent, MatChipsModule],
   templateUrl: './pokemon.component.html',
   styleUrl: './pokemon.component.scss'
 })
@@ -24,6 +27,12 @@ export class PokemonComponent implements OnInit {
   route = inject(ActivatedRoute);
   pokemonService = inject(PokemonService);
   userService = inject(UserService);
+  readonly dialog = inject(MatDialog);
+
+
+
+
+
   parametro: any;
   pokemon: pokemon;
   pokemonSpecies: any;
@@ -104,5 +113,14 @@ export class PokemonComponent implements OnInit {
 
   changeSprite() {
     this.isShiny = !this.isShiny;
+  }
+
+  openMove(url: string){
+    console.log("mossa aperta")
+    this.pokemonService.getByUrl(url).subscribe((resp)=>{
+      this.dialog.open(MovesComponent,
+        {data:{resp: resp}}
+      )
+    })
   }
 }
