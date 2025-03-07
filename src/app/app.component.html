@@ -3,6 +3,7 @@
     <a routerLink="" class="logo"><h1>PokedeX</h1></a>
 
     @if(authService?.currentUser() === null){
+        <a routerLink="" class="lente"><mat-icon>search</mat-icon></a>
         <div class="logReg">
             <a routerLink="login"><h3>Login</h3></a>
             <a routerLink="register"><h3>Register</h3></a>
@@ -12,6 +13,7 @@
     @if(authService?.currentUser()){
         
         <div>
+            <a routerLink="search" class="lente"><mat-icon>search</mat-icon></a>
             @if(userService?.getAdmin()){
                 <a routerLink="accountList"><mat-icon>key</mat-icon></a>
             }

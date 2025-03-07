@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AccountListComponent } from './components/account-list/account-list.component';
 import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
+import { SearchComponent } from './components/search/search.component';
 
 export const routes: Routes = [
     { path: '', component: GenerationsComponent},
@@ -16,6 +17,7 @@ export const routes: Routes = [
     { path: 'pokemon/:id', component: PokemonComponent},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent},
+    { path: 'search', component: SearchComponent},
     { path: 'favourites', component: StarredComponent, canActivate: [AuthGuard]},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     { path: 'accountList', component: AccountListComponent, canActivate: [AdminGuard]},

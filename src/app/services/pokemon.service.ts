@@ -36,4 +36,12 @@ export class PokemonService {
     return this.http.get(url)
   }
 
+  getMove(id: string):Observable<any>{
+    return this.http.get(`https://pokeapi.co/api/v2/move/${id}`)
+  }
+
+  getAllPokemon():Observable<any>{
+    return this.http.get("https://pokeapi.co/api/v2/pokedex/1")
+  }
+
 }

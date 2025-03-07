@@ -1,0 +1,14 @@
+<div>
+    <h2>Search a Pokemon</h2>
+    <hr>
+
+    <div>
+        <mat-form-field >
+            <mat-label>Search Pokemon</mat-label>
+            <input matInput [(ngModel)]="ricerca" placeholder="Scrivi qui..." />
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          
+          <p>Hai cercato: {{ ricerca }}</p>
+    </div>
+</div>

@@ -43,6 +43,7 @@ export class PokemonComponent implements OnInit {
   evo: any[] = [];
   formUrl: any = []
   form: any = [];
+  movesList: any = []
 
   ngOnInit() {
     this.userService.getUserID();
@@ -56,6 +57,8 @@ export class PokemonComponent implements OnInit {
         this.isFavorite = true;
       }
     });
+
+    
   }
 
   loadPokemon() {
@@ -64,6 +67,7 @@ export class PokemonComponent implements OnInit {
       this.evo = [];
       this.formUrl = [];
       this.form = [];
+      this.movesList = []
       this.pokemon = resp;
       this.pokemonService.getByUrl(resp.species.url).subscribe(resp => {
         this.pokemonService.getByUrl(resp.evolution_chain.url).subscribe(resp => {
@@ -98,7 +102,13 @@ export class PokemonComponent implements OnInit {
           });
         });
       });
+      this.pokemon.moves.forEach((e:any) => {
+        this.pokemonService.getByUrl(e.move.url).subscribe((resp: any)=>{
+          this.movesList.push(resp)
+        })
+      })
     });
+    
   }
 
   setFavorite() {
@@ -115,12 +125,16 @@ export class PokemonComponent implements OnInit {
     this.isShiny = !this.isShiny;
   }
 
-  openMove(url: string){
+  openMove(id: string){
     console.log("mossa aperta")
-    this.pokemonService.getByUrl(url).subscribe((resp)=>{
+    this.pokemonService.getMove(id).subscribe((resp)=>{
       this.dialog.open(MovesComponent,
         {data:{resp: resp}}
       )
     })
+  }
+
+  getTypeClass(move: any): string {
+      return `movetype-${move.type.name.toLowerCase()}`;
   }
 }

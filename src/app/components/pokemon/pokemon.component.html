@@ -78,9 +78,9 @@
         <h2>Moves</h2>
         <hr>
         <div class="evo-container">
-            <div *ngFor="let move of pokemon.moves" class="evolution-item">
-                    <mat-chip (click)="openMove(move.move.url)">
-                        <p class="chipName">{{move.move.name.replace('-', ' ') | titlecase}}</p>
+            <div *ngFor="let move of movesList" class="evolution-item">
+                    <mat-chip (click)="openMove(move.id)" [ngClass]="getTypeClass(move)">
+                        <p class="chipName">{{move.name.replace('-', ' ') | titlecase}}</p>
                     </mat-chip>
             </div>
         </div>
