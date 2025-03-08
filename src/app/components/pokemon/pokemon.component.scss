@@ -187,7 +187,9 @@ button {
 }
 
 
-
+p{
+    margin: 0;
+}
 
 
 
@@ -359,9 +361,17 @@ button {
     color: white !important;
 }
 
+
+
+
+
+
 .chipName{
     color: white;
 }
+
+
+
 
 .movetype-normal {
     background-color: #a8a878 !important;
@@ -465,3 +475,84 @@ button {
 
 
 
+
+
+
+@media (max-width: 768px) {
+    .mainInfo, .evolution, .varieties {
+        flex-direction: column;
+        gap: 2rem;
+        padding: 15px;
+        margin-bottom: 1rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        padding: 5px;
+    }
+
+    .name {
+        padding: 15px;
+
+        span {
+            font-size: 24px;
+        }
+
+        .grid-container {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+
+            .grid-item {
+                padding: 8px;
+
+                h2 {
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+
+    .mainInfo {
+        gap: 3rem;
+        padding: 10px;
+    }
+
+    .second, .third {
+        h2 {
+            font-size: 1rem;
+        }
+    }
+
+    .evo-container, .varieties-container {
+        gap: 10px;
+    }
+
+    .evolution-item {
+        width: 140px;
+    }
+
+    .percent {
+        font-size: 12px !important;
+    }
+
+    button {
+        width: 100% !important;
+        max-width: 150px;
+    }
+}
+
+
+.mat-mdc-chip {
+    border: none !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+
+.mat-mdc-chip::before {
+    display: none !important;
+}

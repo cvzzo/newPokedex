@@ -46,3 +46,15 @@ html {
     --type-stellar: #6b5b95bb;
     --type-unknown: #8b8b8bbb;
 }
+@media (max-width: 480px) {
+
+html{
+  padding: 5%;
+}
+}
+
+@media (max-width: 768px) {
+  html{
+    padding: 5%;
+  }
+}

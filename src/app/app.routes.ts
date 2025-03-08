@@ -10,9 +10,11 @@ import { AccountListComponent } from './components/account-list/account-list.com
 import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
 import { SearchComponent } from './components/search/search.component';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
-    { path: '', component: GenerationsComponent},
+    { path: '', component: HomeComponent},
+    { path: 'generations', component: GenerationsComponent},
     { path: 'generation/:id', component: GenerationComponent},
     { path: 'pokemon/:id', component: PokemonComponent},
     { path: 'login', component: LoginComponent},

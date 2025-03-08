@@ -1,27 +1,75 @@
+<div class="pc">
+    <div class="container">
+        <a routerLink="" class="logo">
+            <h1>PokedexPlus</h1>
+        </a>
 
-<div class="container">
-    <a routerLink="" class="logo"><h1>PokedeX</h1></a>
-
-    @if(authService?.currentUser() === null){
-        <a routerLink="" class="lente"><mat-icon>search</mat-icon></a>
+        @if(authService?.currentUser() === null){
         <div class="logReg">
-            <a routerLink="login"><h3>Login</h3></a>
-            <a routerLink="register"><h3>Register</h3></a>
+            <a routerLink="search" class="lente"><mat-icon>search</mat-icon></a>
+            <a routerLink="login" class="button">
+                <h3>Login</h3>
+            </a>
+            <a routerLink="register" class="button">
+                <h3>Register</h3>
+            </a>
         </div>
-    }
-    
-    @if(authService?.currentUser()){
-        
+        }
+
+        @if(authService?.currentUser()){
+
         <div>
             <a routerLink="search" class="lente"><mat-icon>search</mat-icon></a>
             @if(userService?.getAdmin()){
-                <a routerLink="accountList"><mat-icon>key</mat-icon></a>
+            <a routerLink="accountList"><mat-icon>key</mat-icon></a>
             }
             <a routerLink="favourites" class="star"><mat-icon>favorite</mat-icon></a>
             <a routerLink="profile"><mat-icon>person</mat-icon></a>
             <a (click)="logout()"><mat-icon>logout</mat-icon></a>
         </div>
-    }
+        }
+    </div>
+</div>
+<div class="mobile">
+    <div>
+        <mat-icon mat-button [matMenuTriggerFor]="menu">menu</mat-icon>
+        <mat-menu #menu="matMenu">
+            @if(authService?.currentUser() === null){
+            <button mat-menu-item>
+                <a routerLink="login" class="mbutton">
+                    <h3>Login</h3>
+                </a>
+            </button>
+            <button mat-menu-item>
+                <a routerLink="register" class="mbutton">
+                    <h3>Register</h3>
+                </a>
+            </button>
+            }
+            @if(authService?.currentUser()){
+            @if(userService?.getAdmin()){
+            <button mat-menu-item>
+                <a routerLink="accountList">Admin</a>
+            </button>
+            }
+            <button mat-menu-item>
+                <a routerLink="profile">Profile</a>
+            </button>
+            <button mat-menu-item>
+                <a routerLink="favourites" class="mstar">Favorite</a>
+            </button>
+            <button mat-menu-item>
+                <a (click)="logout()">Logout</a>
+            </button>
+            }
+        </mat-menu>
+    </div>
+
+    <a routerLink="" class="mlogo">
+        <h1>PokedexPlus</h1>
+    </a>
+    <a routerLink="search" class="mlente"><mat-icon>search</mat-icon></a>
+
 </div>
 
 

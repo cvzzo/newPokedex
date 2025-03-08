@@ -56,3 +56,9 @@ h2{
     text-align: center;
 }
 
+@media (max-width: 768px) {
+    img{
+        width: 60px !important;
+    }
+}
+

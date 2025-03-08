@@ -7,10 +7,12 @@ import { SupabaseService } from './auth/supabase.service';
 import { Router } from '@angular/router';
 import { UserService } from './auth/user.service';
 import { MatIcon } from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, CommonModule, MatIcon],
+  imports: [RouterOutlet, RouterLink, CommonModule, MatIcon, MatMenuModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -32,7 +34,12 @@ export class AppComponent implements OnInit {
   }
   
   userID:any
+  menuOpen = false;
 
+  toggleMenu() {
+      this.menuOpen = !this.menuOpen;
+  }
+  
   async ngOnInit() {
     this.authService?.supabase.auth.onAuthStateChange((e, s) => {
         if (e === 'SIGNED_IN') {
