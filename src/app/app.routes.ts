@@ -11,6 +11,8 @@ import { AuthGuard } from './auth/auth.guard';
 import { AdminGuard } from './auth/admin.guard';
 import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
+import { SeriesComponent } from './components/series/series.component';
+import { SerieComponent } from './components/serie/serie.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
@@ -23,5 +25,7 @@ export const routes: Routes = [
     { path: 'favourites', component: StarredComponent, canActivate: [AuthGuard]},
     { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
     { path: 'accountList', component: AccountListComponent, canActivate: [AdminGuard]},
+    { path: 'series', component: SeriesComponent},
+    { path: 'serie/:id', component: SerieComponent},
     { path: '**', redirectTo: '' }
 ];
