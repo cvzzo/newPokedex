@@ -2,7 +2,13 @@
 <hr>
 
 <div class="seriresContainer">
-    <div *ngFor="let serie of series" class="serie">
+    <ng-container *ngFor="let serie of series">
+        <div class="serie">
+            <a [routerLink]="['/serie', serie.name]">
+                <h2 class="serieTitle">{{serie.name}}</h2>
+                <img [src]="serie.images.logo" alt="">
+            </a>
+        </div>
+    </ng-container>
 
-    </div>
 </div>

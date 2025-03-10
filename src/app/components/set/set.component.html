@@ -1,0 +1,11 @@
+<h2>Choose a card</h2>
+<hr>
+
+<div class="cards-container">
+    <div *ngFor="let card of cards" class="card">
+        <a [routerLink]="['/card', card.id]">
+            <img [src]="card.images.small" alt="{{card.name}}">
+            <h2 class="cardName">{{card.name}}</h2>
+        </a>
+    </div>
+</div>

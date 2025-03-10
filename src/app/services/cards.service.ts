@@ -16,7 +16,15 @@ export class CardsService {
     return this.http.get(`${this.link}sets`)
   }
 
-  getSerieLogo(name: string):Observable<any>{
-    return this.http.get(`https://images.pokemontcg.io/${name}1/logo.png`)
+  getSets(id: string):Observable<any>{
+    return this.http.get(`${this.link}${id}`)
+  }
+  
+  getCards(id: string):Observable<any>{
+    return this.http.get(`${this.link}cards?q=set.id:${id}`)
+  }
+
+  getCard(id: string):Observable<any>{
+    return this.http.get(`${this.link}cards/${id}`)
   }
 }

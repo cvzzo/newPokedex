@@ -1,0 +1,47 @@
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.486) !important;
+    border-radius: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+
+.set {
+    background-color: rgba(255, 255, 255, 0.903);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+    a{
+        text-decoration: none;
+    .setName {
+        color: black;
+        margin-bottom: 10px;
+    }
+
+    img {
+        width: 100px;
+        display: block;
+        margin: 0 auto;
+    }
+}}
+
+@media (max-width: 768px) {
+.set{
+    width: 70%;
+}
+}

@@ -1,1 +1,11 @@
-<p>serie works!</p>
+<h2>Choose a set</h2>
+<hr>
+
+<ng-content *ngFor="let set of sets">
+    <div class="set">
+        <a [routerLink]="['/set', set.id]">
+        <h2 class="setName">{{set.name}}</h2>
+        <img [src]="set.images.logo">
+    </a>
+    </div>
+</ng-content>

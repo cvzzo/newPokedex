@@ -1,0 +1,54 @@
+<h2>{{ card.name }}</h2>
+<hr>
+
+<div class="mainInfo">
+    <img [src]="card.images.small" [alt]="card.name">
+    <h3><span>ID: </span> {{ card.id }}</h3>
+    <h3><span>Number: </span> {{ card.number }}</h3>
+    <h3><span>HP: </span> {{ card.hp }}</h3>
+    <h3><span>Types: </span></h3>
+
+    <h3 *ngFor="let type of card.types" [ngClass]="'type-' + type.toLowerCase()">
+        {{ type }}
+    </h3>
+
+    <h3><span>Supertype: </span>{{card.supertype}}</h3>
+    <h3><span>Rules: </span>{{card.rules}}</h3>
+    @if(card.abilities !== null){
+    <h3><span>Abilities: </span></h3>
+    <div *ngFor="let ab of card.abilities">
+        <h3>{{ab.name}}</h3>
+        <h3>{{ab.text}}</h3>
+    </div>
+    }
+    @if(card.attacks !== null){
+    <h3><span>Attacks: </span></h3>
+    <div *ngFor="let ak of card.attacks">
+        <h3>{{ak.name}}</h3>
+        <h3 *ngIf="ak.damage!== null"><span>Damage: </span>{{ak.damage}}</h3>
+        <h3 *ngIf="ak.text !== null">{{ak.text}}</h3>
+        <div *ngIf="ak.cost !== null">
+            <h3><span>Cost: </span></h3>
+            <h3 *ngFor="let cost of ak.cost">{{cost}}</h3>
+        </div>
+    </div>
+    }
+    <h3><span>Weaknesses: </span></h3>
+    <div *ngFor="let wk of card.weaknesses">
+        <h3><span>Type: </span>{{wk.type}}</h3>
+        <h3><span>Value: </span>{{wk.value}}</h3>
+    </div>
+    @if(card.retreatCost !== null){
+        <h3><span>Retreat cost: </span></h3>
+        <h3 *ngFor="let cost of card.retreatCost">{{cost}}</h3>
+    }
+    <h3><span>Rarity:</span> {{card.rarity}}</h3>
+    <h3><span>Other info</span></h3>
+    <h3><span>Prices: </span></h3>
+    <h3><span>Market: </span>{{card.tcgplayer.prices.holofoil.market}} $</h3>
+    <h3><span>Low: </span>{{card.tcgplayer.prices.holofoil.low}} $</h3>
+    <h3><span>Mid: </span>{{card.tcgplayer.prices.holofoil.mid}} $</h3>
+    <h3><span>High: </span>{{card.tcgplayer.prices.holofoil.high}} $</h3>
+    <h3 *ngIf="card.tcgplayer.prices.holofoil.directLow !== null"><span>DirectLow: </span>{{card.tcgplayer.prices.holofoil.directLow}} $</h3>
+
+</div>

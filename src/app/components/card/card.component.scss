@@ -1,0 +1,33 @@
+hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 1px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.486) !important;
+    border-radius: 10px;
+}
+
+h2{
+    text-align: center;
+}
+
+.mainInfo {
+    display: flex;
+    margin-bottom: 2rem;
+    gap: 8rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.656);
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+
+@media (max-width: 768px) {
+    .mainInfo{
+        flex-direction: column;
+        gap: 2rem;
+        padding: 15px;
+        margin-bottom: 1rem;
+    }
+}

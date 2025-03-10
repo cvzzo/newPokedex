@@ -13,6 +13,8 @@ import { SearchComponent } from './components/search/search.component';
 import { HomeComponent } from './components/home/home.component';
 import { SeriesComponent } from './components/series/series.component';
 import { SerieComponent } from './components/serie/serie.component';
+import { SetComponent } from './components/set/set.component';
+import { CardComponent } from './components/card/card.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent},
@@ -27,5 +29,7 @@ export const routes: Routes = [
     { path: 'accountList', component: AccountListComponent, canActivate: [AdminGuard]},
     { path: 'series', component: SeriesComponent},
     { path: 'serie/:id', component: SerieComponent},
+    { path: 'set/:id', component: SetComponent},
+    { path: 'card/:id', component: CardComponent},
     { path: '**', redirectTo: '' }
 ];
